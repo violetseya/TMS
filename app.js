@@ -1,4 +1,4 @@
-const AMAP_KEY = 'YOUR_AMAP_WEB_KEY';
+const AMAP_KEY = 'feb6b5751c4a4b428ebe1446d6a11145';
 const colors = ['#2667ff','#f58b43','#16a58a','#8566e9','#e75b5b','#e2a822'];
 const depot = { name:'虹桥物流园 · 上海', address:'上海市闵行区申贵路1500号', lng:121.3186, lat:31.1982 };
 let vehicles = [
