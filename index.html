@@ -1,12 +1,87 @@
-Warning: truncated output (original token count: 3161)
-Total output lines: 88
-
 <!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TMS 调度员工作…3061 tokens truncated…tps://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_WEB_KEY&plugin=AMap.Driving,AMap.Geocoder,AMap.ToolBar,AMap.MoveAnimation"></script>
+  <meta name="description" content="TMS 调度员工作台：多车 VRP 路线规划、装载率、准点率与高德实时路线。" />
+  <title>TMS · 调度指挥看板</title>
+  <link rel="preconnect" href="https://webapi.amap.com" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>.route-marker{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#172f55;color:#fff;border:2px solid #fff;box-shadow:0 3px 9px rgba(15,35,65,.34);font:800 12px/1 Inter,"PingFang SC","Microsoft YaHei",sans-serif}.evidence-link{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:0;border:0;background:transparent;color:#2667ff;font:700 11px/1 Inter,"PingFang SC","Microsoft YaHei",sans-serif;cursor:pointer}.evidence-link:hover{text-decoration:underline}.evidence-modal{width:min(640px,calc(100vw - 32px))}.evidence-body{padding:4px 20px 20px}.evidence-intro{font-size:13px;line-height:1.6;color:#65758b;margin:13px 0}.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.evidence-card{border:1px solid #e4eaf2;background:#f8faff;border-radius:9px;padding:11px}.evidence-card span{display:block;font-size:11px;color:#8290a3;margin-bottom:4px}.evidence-card strong{font-size:14px;color:#1a2d4a}.evidence-list{list-style:none;padding:0;margin:13px 0 0;border-top:1px solid #e8edf3}.evidence-list li{padding:10px 0;border-bottom:1px solid #e8edf3;font-size:12px;line-height:1.5;color:#526176}.evidence-list b{color:#172f55}.evidence-source{margin-top:14px;padding:10px 11px;border-radius:8px;background:#edf4ff;color:#4d6390;font-size:11px;line-height:1.55}.evidence-source b{color:#2459bd}.table-evidence{margin-top:5px;font-size:10px}.aux-view{min-height:640px}.aux-header{display:flex;justify-content:space-between;align-items:end;margin:0 0 20px}.aux-header h1{margin:0;font-size:27px}.aux-header p{margin:7px 0 0;color:#6e7e94}.aux-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.aux-card{background:#fff;border:1px solid #e6ebf1;border-radius:13px;padding:18px;box-shadow:0 8px 24px rgba(22,42,78,.05)}.aux-card h3{margin:0 0 6px;font-size:16px}.aux-card p{margin:0;color:#718098;font-size:12px;line-height:1.6}.aux-kpi{font-size:25px;font-weight:800;color:#122a51;margin:12px 0 6px}.aux-list{margin-top:18px;background:#fff;border:1px solid #e6ebf1;border-radius:13px;padding:4px 18px;box-shadow:0 8px 24px rgba(22,42,78,.05)}.aux-list-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid #edf0f4}.aux-list-row:last-child{border-bottom:0}.aux-list-row strong{font-size:14px}.aux-list-row span{font-size:12px;color:#718098}.severity{font-size:11px;font-weight:800;border-radius:5px;padding:5px 7px;background:#fff3e7;color:#cc6e1d}.severity.safe{background:#e9f8f3;color:#129978}.back-dashboard{background:#fff;border:1px solid #dce5f1;border-radius:8px;color:#47617f;padding:9px 13px;font-weight:700;font-size:12px;cursor:pointer}.delivery-status{font-size:10px;color:#63738a;background:#f1f5fa;border:1px solid #e1e8f0;border-radius:14px;padding:6px 8px;white-space:nowrap}.delivery-status.running{background:#eaf8f3;color:#0f9878;border-color:#d3eee5}.delivery-marker{padding:5px 7px;border:2px solid #fff;border-radius:16px;color:#fff;box-shadow:0 4px 10px rgba(20,42,79,.32);font:800 11px/1 Inter,"PingFang SC","Microsoft YaHei",sans-serif;white-space:nowrap}.delivery-marker-inner{display:flex;align-items:center;gap:4px;transform:rotate(180deg)}.delivery-marker span{font-size:14px;line-height:1}</style>
+  <style>.resolve-btn{border:1px solid #bed0ff;background:#f3f6ff;color:#2257ce;border-radius:7px;padding:7px 10px;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap}.resolve-btn:hover{background:#e8efff}.resolution-modal{width:min(520px,calc(100vw - 32px))}.resolution-body{padding:4px 20px 20px}.resolution-context{padding:10px 11px;margin:12px 0;border-radius:8px;background:#f4f7fc;color:#52657f;font-size:12px;line-height:1.55}.resolution-body label{display:block;margin:13px 0 0;color:#526078;font-size:12px;font-weight:750}.resolution-body select,.resolution-body textarea{display:block;width:100%;margin-top:6px;border:1px solid #dce3ec;border-radius:7px;padding:10px;font:inherit;font-size:13px;outline:0}.resolution-body textarea{height:76px;resize:vertical}.resolved-note{font-size:11px;color:#169577;font-weight:800}</style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">T</span><span>TMS <em>CONTROL</em></span></div>
+      <nav aria-label="主导航"><button class="nav-active" data-view="dashboard">调度看板</button><button data-view="fleet">运力管理</button><button data-view="exceptions">异常中心 <b>3</b></button><button data-view="reports">数据报表</button></nav>
+      <div class="top-actions"><span class="live"><i></i>计划计算就绪</span><button class="icon-btn" aria-label="通知">◌</button><div class="avatar">调</div></div>
+    </header>
+
+    <main>
+      <div id="dashboardView">
+      <section class="headline">
+        <div><p class="eyebrow">DISPATCHER WORKSPACE · 华东当日配送</p><h1>调度指挥看板</h1><p class="subcopy">多车运力、线路与时效在同一张地图协同决策</p></div>
+        <div class="headline-actions"><button class="ghost" id="resetBtn">重置示例</button><button class="primary" id="planBtn">生成 VRP 最优方案</button></div>
+      </section>
+
+      <section class="kpis" aria-label="调度核心指标">
+        <article><span>计划车次</span><strong id="tripCount">03</strong><small>已分配 <b id="assignedCount">8</b> 个站点</small><button class="evidence-link" data-evidence="trips">查看分车依据</button></article>
+        <article><span>预计总公里</span><strong id="totalKm">—</strong><small>高德驾车路径汇总</small><button class="evidence-link" data-evidence="distance">查看路径来源</button></article>
+        <article><span>平均装载率</span><strong id="averageLoad">—</strong><small>按重量 / 体积双约束</small><button class="evidence-link" data-evidence="load">查看计算依据</button></article>
+        <article><span>预计准点率</span><strong id="onTime">—</strong><small>基于路线 + 时间窗</small><button class="evidence-link" data-evidence="ontime">查看预测依据</button></article>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel control-panel">
+          <div class="panel-title"><div><p class="eyebrow">FLEET</p><h2>配送车辆</h2></div><button class="round-add" id="addVehicle" aria-label="添加车辆">+</button></div>
+          <div id="vehicleList" class="vehicle-list"></div>
+          <div class="depot"><span class="pin">⌖</span><div><small>配送中心</small><strong>虹桥物流园 · 上海</strong><p id="depotCoords">正在定位…</p></div></div>
+          <div class="divider"></div>
+          <div class="panel-title station-title"><div><p class="eyebrow">ORDERS</p><h2>配送站点</h2></div><button class="round-add" id="addStop" aria-label="添加站点">+</button></div>
+          <div id="stopList" class="stop-list"></div>
+        </aside>
+
+        <section class="map-card">
+          <div class="map-toolbar">
+            <div><span class="map-title">配送路线总览</span><span class="map-subtitle">每色代表一辆配送车</span></div>
+            <div class="map-controls"><span id="deliveryStatus" class="delivery-status">计划模拟</span><button id="processBtn">配送过程模拟</button><button id="fitMap">适配视图</button><button id="mapStyle">切换底图</button></div>
+          </div>
+          <div id="map"><div class="map-fallback"><strong>正在加载高德真实地图…</strong><span>若地图未显示，仍可使用 VRP 方案与地址定位。</span></div></div>
+          <div class="map-legend" id="mapLegend"></div>
+        </section>
+
+        <aside class="panel insights">
+          <div class="panel-title"><div><p class="eyebrow">PLAN INSIGHTS</p><h2>本次方案</h2></div><span class="plan-tag">VRP</span></div>
+          <div class="route-metric"><span>总配送距离</span><strong id="sideDistance">—</strong></div>
+          <div class="route-metric"><span>预计配送时长</span><strong id="sideDuration">—</strong></div>
+          <div class="route-metric"><span>超载风险</span><strong class="safe" id="riskLabel">待计算</strong></div>
+          <div class="divider"></div>
+          <h3>装载率依据</h3>
+          <p class="hint">系统取“重量占用”和“体积占用”中较高值，防止单一指标掩盖实际装车风险。</p>
+          <div class="formula"><span>装载率</span><strong>max(已配重量/核载, 已配体积/容积)</strong></div>
+          <div class="divider"></div>
+          <h3>调度建议</h3>
+          <ul class="advice" id="advice"></ul>
+        </aside>
+      </section>
+
+      <section class="schedule panel">
+        <div class="schedule-head"><div><p class="eyebrow">TRIP MANIFEST</p><h2>车次执行明细</h2></div><span>路线按站点时间窗优先级排序</span></div>
+        <div class="table-wrap"><table><thead><tr><th>车次 / 司机</th><th>配送顺序</th><th>总公里</th><th>装载率</th><th>预计准点率</th><th>状态</th></tr></thead><tbody id="tripTable"></tbody></table></div>
+      </section>
+      </div>
+      <section id="auxView" class="aux-view" hidden></section>
+    </main>
+  </div>
+
+  <dialog id="stopDialog"><form method="dialog" class="modal"><div class="modal-head"><h2>新增配送站点</h2><button value="cancel" aria-label="关闭">×</button></div><label>站点名称<input id="stopName" placeholder="如：静安寺门店" required /></label><label>真实地址 <span>将通过高德定位</span><input id="stopAddress" placeholder="如：上海市静安区南京西路1686号" required /></label><div class="two-col"><label>货物重量（kg）<input id="stopWeight" type="number" min="1" value="300" required /></label><label>货物体积（m³）<input id="stopVolume" type="number" min="0.1" step="0.1" value="2.5" required /></label></div><label>期望到达时间窗<input id="stopWindow" value="10:00–12:00" required /></label><button value="default" id="saveStop" class="primary wide">定位并加入方案</button></form></dialog>
+  <dialog id="vehicleDialog"><form method="dialog" class="modal"><div class="modal-head"><h2>新增配送车辆</h2><button value="cancel" aria-label="关闭">×</button></div><label>车牌号<input id="vehiclePlate" placeholder="沪A·D1234" required /></label><div class="two-col"><label>核载重量（kg）<input id="vehicleWeight" type="number" min="100" value="2500" required /></label><label>容积（m³）<input id="vehicleVolume" type="number" min="1" step="0.5" value="18" required /></label></div><label>车型<select id="vehicleType"><option>4.2m 厢式货车</option><option>6.8m 厢式货车</option><option>新能源轻卡</option></select></label><button value="default" id="saveVehicle" class="primary wide">加入配送运力</button></form></dialog>
+  <dialog id="evidenceDialog" class="modal evidence-modal"><div class="modal-head"><h2 id="evidenceTitle">指标数据依据</h2><button id="closeEvidence" aria-label="关闭">×</button></div><div id="evidenceBody" class="evidence-body"></div></dialog>
+  <dialog id="resolutionDialog" class="modal resolution-modal"><div class="modal-head"><h2 id="resolutionTitle">处理异常</h2><button id="closeResolution" aria-label="关闭">×</button></div><div class="resolution-body"><div id="resolutionContext" class="resolution-context"></div><label>处置方式<select id="resolutionAction"><option value="replan">执行调度建议并重新生成 VRP</option><option value="follow">标记已跟进，保留当前方案</option><option value="ignore">本次忽略提醒</option></select></label><label>处理备注<textarea id="resolutionNote" placeholder="例如：已联系司机，优先配送早时窗站点"></textarea></label><button id="confirmResolution" class="primary wide">确认处理</button></div></dialog>
+
+  <script>window._AMapSecurityConfig = { securityJsCode: 'YOUR_AMAP_SECURITY_JS_CODE' };</script>
+  <script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_WEB_KEY&plugin=AMap.Driving,AMap.Geocoder,AMap.ToolBar,AMap.MoveAnimation"></script>
   <script src="./app.js"></script>
 </body>
 </html>
